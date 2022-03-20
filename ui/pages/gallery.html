@@ -1,0 +1,891 @@
+<!--
+=========================================================
+ Light Bootstrap Dashboard - v2.0.1
+=========================================================
+
+ Product Page: https://www.creative-tim.com/product/light-bootstrap-dashboard
+ Copyright 2019 Creative Tim (https://www.creative-tim.com)
+ Licensed under MIT (https://github.com/creativetimofficial/light-bootstrap-dashboard/blob/master/LICENSE)
+
+ Coded by Creative Tim
+
+=========================================================
+
+ The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.  -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="../assets/img/favicon.ico">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Figli - Gallery</title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+    <!-- CSS Files -->
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../assets/css/light-bootstrap-dashboard.css?v=2.0.0 " rel="stylesheet" />
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link href="../assets/css/demo.css" rel="stylesheet" />
+       <script src="https://unpkg.com/ipfs-http-client-lite/dist/index.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.ethers.io/lib/ethers-5.0.umd.min.js" type="text/javascript"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/ethjs@0.3.4/dist/ethjs.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+ 
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="sidebar" data-image="../assets/img/sidebar-5.jpg">
+            <!--
+        Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
+
+        Tip 2: you can also add an image using data-image tag
+    -->
+            <div class="sidebar-wrapper">
+                <div class="logo">
+                    <a href="index.html" class="simple-text">
+                        Figli
+                    </a>
+                </div>
+                <ul class="nav">
+                    <li>
+                        <a class="nav-link" href="../index.html">
+                            <i class="nc-icon nc-chart-pie-35"></i>
+                            <p>Dashboard</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link active" href="./gallery.html">
+                            <i class="nc-icon nc-album-2"></i>
+                            <p>Gallery</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="main-panel">
+            <!-- Navbar -->
+            <nav class="navbar navbar-expand-lg " color-on-scroll="500">
+                <div class="container-fluid">
+                                  
+                    <a class="navbar-brand" href="#pablo"> Figli Gallery </a>
+                    
+                    <button href="" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-bar burger-lines"></span>
+                        <span class="navbar-toggler-bar burger-lines"></span>
+                        <span class="navbar-toggler-bar burger-lines"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-end" id="navigation">
+                        <ul class="nav navbar-nav mr-auto">
+                            <li class="nav-item">&nbsp;
+                            </li>
+                            <li class=" nav-item">&nbsp;<i class="nc-icon nc-credit-card"></i>&nbsp;<span id="show_wallet" class="text-muted"></span>
+                            </li>
+                            <li class="nav-item">
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                              
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="connect_web_3" href="#">
+                                    <span class="no-icon">Connect Web 3</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- End Navbar -->
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Your Minted Images</h4>
+                                    <p class="card-category">Share and share alike</a>
+                                    </p>
+                                </div>
+                                <div class="card-body all-icons">
+                                    <div class="row" id="gallery_display">
+                                      
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="footer">
+                <div class="container-fluid">
+                    <nav>
+                        <ul class="footer-menu">
+                            <li>
+                                <a href="https://www.blockstarlogic.com">
+                                    Block Star Logic
+                                </a>
+                            </li>         
+                        </ul>
+                        <p class="copyright text-center">
+                            ©
+                            <script>
+                                document.write(new Date().getFullYear())
+                            </script>
+                            <a href="https://www.blockstarlogic.com">Figli</a>, NEAR NFTs done differently
+                        </p>
+                    </nav>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <!--   -->
+    <!-- Mini Unlock Reshare Modal -->
+    <div class="modal fade modal-mini modal-primary" id="unlock_re_share_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header justify-content-center">
+                        <div class="modal-profile">
+                            <i class="nc-icon nc-lock-circle-open"></i>
+                        </div>
+                    </div>
+                    <div class="modal-body text-center">
+                        <p>Unlock Reshare Fee: <span id="unlock_re_share_fee_display"></span></p>
+                        <input type="hidden"  id="unlock_re_share_nft_id">
+                    </div>
+                    <div class="modal-footer">
+                        <button id="unlock_reshare_button" type="button" class="btn btn-link btn-simple" data-dismiss="modal">Unlock</button>
+                        <button type="button" class="btn btn-link btn-simple" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--  End Modal -->
+        <!-- Mini Reshare Modal -->
+        <div class="modal fade modal-mini modal-primary" id="re_share_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header justify-content-center">
+                        <div class="modal-profile">
+                            <i class="nc-icon nc-send"></i>
+                        </div>
+                    </div>
+                    <div class="modal-body text-center">
+                        <p>Reshare with frens <input type="text"  id="re_share_address_field" placeholder="enter frens Aurora address ... "> </p>
+                        <input type="hidden"  id="re_share_nft_id">
+                    </div>
+                    <div class="modal-footer">
+                        <button id="reshare_button" type="button" class="btn btn-link btn-simple" data-dismiss="modal">Reshare</button>
+                        <button type="button" class="btn btn-link btn-simple" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--  End Modal -->
+        <!-- Mini Remint Modal -->
+        <div class="modal fade modal-mini modal-primary" id="re_mint_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header justify-content-center">
+                        <div class="modal-profile">
+                            <i class="nc-icon nc-refresh-02"></i>
+                        </div>
+                    </div>
+                    <div class="modal-body text-center">
+                        <p>Re Mint Fee: <span id="remint_fee_display_span"></span></p>
+                        <p>NFT to Remint : <span id="remint_nft_display_span"></span></p>                        
+                        <input type="hidden"  id="re_mint_nft_id">
+                    </div>
+                    <div class="modal-footer">
+                        <button id="re_mint_button" type="button" class="btn btn-link btn-simple" data-dismiss="modal">Remint</button>
+                        <button type="button" class="btn btn-link btn-simple" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--  End Modal -->
+        <!-- Mini Trash Modal -->
+        <div class="modal fade modal-mini modal-primary" id="trash_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header justify-content-center">
+                        <div class="modal-profile">
+                            <i class="nc-icon nc-simple-remove"></i>
+                        </div>
+                    </div>
+                    <div class="modal-body text-center">
+                        <p>Are you sure you wish to trash your re-share? ID: <span id="trash_nft_id_span"></span></p>
+                        <input type="hidden"  id="trash_nft_id">
+                    </div>
+                    <div class="modal-footer">
+                        <button id="trash_button" type="button" class="btn btn-link btn-simple" data-dismiss="modal">Trash</button>
+                        <button type="button" class="btn btn-link btn-simple" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--  End Modal -->
+
+        <!-- Mini Count Modal -->
+        <div class="modal fade modal-mini modal-primary" id="count_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header justify-content-center">
+                        <div class="modal-profile">
+                            <i class="nc-icon nc-simple-remove"></i>
+                        </div>
+                    </div>
+                    <div class="modal-body text-center">
+                        <p>This image has been shared :<span id="share_count_span"></span> times</p>                                
+                        <p>This image has been re-minted :<span id="remint_count_span"></span> times</p>
+                        <p>This image has been re-shared :<span id="reshared_count_span"></span> times</p>                                                        
+                    </div>
+                    <div class="modal-footer">                                
+                        <button type="button" class="btn btn-link btn-simple" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--  End Modal -->
+
+        <!-- Mini Earned Fees Modal -->
+        <div class="modal fade modal-mini modal-primary" id="earned_fees_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header justify-content-center">
+                        <div class="modal-profile">
+                            <i class="nc-icon nc-simple-remove"></i>
+                        </div>
+                    </div>
+                    <div class="modal-body text-center">
+                        <p>This image has Earned :<span id="earned_fees_span"></span> </p>                                
+                    </div>
+                    <div class="modal-footer">                                
+                        <button type="button" class="btn btn-link btn-simple" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--  End Modal -->
+                        <!-- Mini Share Modal -->
+        <div class="modal fade modal-mini modal-primary" id="share_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header justify-content-center">
+                        <div class="modal-profile">
+                            <i class="nc-icon nc-simple-remove"></i>
+                        </div>
+                    </div>
+                    <div class="modal-body text-center">
+                        <p>Share with frens <input type="text"  id="share_address_field" placeholder="enter frens Aurora address ... "> </p>
+                        <input type="hidden"  id="share_nft_id" value="">
+                    </div>
+                    <div class="modal-footer">
+                        <button id="share_button" type="button" class="btn btn-link btn-simple" data-dismiss="modal">Share</button>
+                        <button type="button" class="btn btn-link btn-simple" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--  End Modal -->
+
+        <!-- Mini Burn Modal -->
+        <div class="modal fade modal-mini modal-primary" id="burn_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header justify-content-center">
+                        <div class="modal-profile">
+                            <i class="nc-icon nc-simple-remove"></i>
+                        </div>
+                    </div>
+                    <div class="modal-body text-center">
+                        <p>Are you sure you wish to burn your NFT? ID: <span id="burn_nft_id_span"</p>
+                        <input type="hidden"  id="burn_nft_id">
+                    </div>
+                    <div class="modal-footer">
+                        <button id="burn_button" type="button" class="btn btn-link btn-simple" data-dismiss="modal">Burn</button>
+                        <button type="button" class="btn btn-link btn-simple" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--  End Modal -->
+
+        <!-- Mini Hide Modal -->
+        <div class="modal fade modal-mini modal-primary" id="hide_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header justify-content-center">
+                        <div class="modal-profile">
+                            <i class="nc-icon nc-simple-remove"></i>
+                        </div>
+                    </div>
+                    <div class="modal-body text-center">
+                        <p>Are you sure you wish to hide your NFT? ID: <span id="hide_nft_id_span"</p>
+                        <input type="hidden"  id="hide_nft_id">
+                    </div>
+                    <div class="modal-footer">
+                        <button id="hide_button" type="button" class="btn btn-link btn-simple" data-dismiss="modal">Hide</button>
+                        <button type="button" class="btn btn-link btn-simple" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--  End Modal -->
+</body>
+<!--   Core JS Files   -->
+<script src="../assets/js/core/jquery.3.2.1.min.js" type="text/javascript"></script>
+<script src="../assets/js/core/popper.min.js" type="text/javascript"></script>
+<script src="../assets/js/core/bootstrap.min.js" type="text/javascript"></script>
+<!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
+<script src="../assets/js/plugins/bootstrap-switch.js"></script>
+<!--  Google Maps Plugin    -->
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+<!--  Chartist Plugin  -->
+<script src="../assets/js/plugins/chartist.min.js"></script>
+<!--  Notifications Plugin    -->
+<script src="../assets/js/plugins/bootstrap-notify.js"></script>
+<!-- Control Center for Light Bootstrap Dashboard: scripts for the example pages etc -->
+<script src="../assets/js/light-bootstrap-dashboard.js?v=2.0.0 " type="text/javascript"></script>
+<!-- Light Bootstrap Dashboard DEMO methods, don't include it in your project! -->
+<script src="../assets/js/demo.js"></script>
+
+<script src="../abi/iFigliAbi.js"></script>
+<script>
+
+    const galleryDisplay = ge("gallery_display");
+
+    const shareCountSpan = ge("share_count_span");
+    const remintCountSpan = ge("remint_count_span");
+    const resharedCountSpan = ge("reshared_count_span");
+    function setCountModal(nftId) {
+        figliContract.methods.getShareCounts(nftId).call({from :account})
+        .then(function(response){
+            shareCountSpan.innerHTML = response._shares; 
+            remintCountSpan.innerHTML = response._remints; 
+            resharedCountSpan.innerHTML = response._reshares; 
+        })
+        .catch(function(err){
+            console.log(err);
+        });
+    }
+
+    const earnedFeesSpan = ge("earned_fees_span");
+    function setEarnedFeesModal(nftId) {
+        figliContract.methods.findNFT(nftId).call({from : account})
+        .then(function(response){
+            console.log(response);
+            earnedFeesSpan.innerHTML = response._shareFees; 
+        })
+        .catch(function(err){
+            console.log(err);
+        });
+    }
+
+    const unlockReshareFeeDisplay = ge("unlock_re_share_fee_display");
+
+    const unlockReShareButton = ge("unlock_reshare_button");
+    const unlockReShareNFTId = ge("unlock_re_share_nft_id");
+    unlockReShareButton.addEventListener("click", unlockReshare);
+
+    function setUnlockReshareModal(nftId){
+        unlockReShareNFTId.value = nftId; 
+        figliContract.methods.getUnlockReShareFee().call({from : account})
+        .then(function(response){
+            console.log(response);
+            unlockReshareFeeDisplay.innerHTML = response; 
+        })
+        .catch(function(err){
+            console.log(err);
+        });
+    }
+
+    function unlockReshare() { 
+        var nftId = unlockReShareNFTId.value;
+        figliContract.methods.getUnlockReShareFee().call({from : account})
+        .then(function(response){
+            console.log(response);
+            var fee = response; 
+            console.log(nftId);
+            console.log(fee);
+            figliContract.methods.unlockReShare(nftId, fee).send({from : account, value : fee})
+            .then(function(response){
+                console.log(response);
+            })
+            .catch(function(err){
+                console.log(err);
+            });
+        })
+        .catch(function(err){
+            console.log(err);
+        });
+    }
+    const reshareUserAddress = ge("re_share_address_field");
+    const reshareNFTId = ge("re_share_nft_id");
+    const reshareButton = ge("reshare_button");
+    reshareButton.addEventListener("click", reShare);
+
+    function setReshareModal(nftId) {        
+        reshareNFTId.value = nftId; 
+   
+    }
+
+    function reShare() { 
+        var user = reshareUserAddress.value; 
+        var nftId = reshareNFTId.value;
+        figliContract.methods.reshare(user, nftId).send({from : account})
+        .then(function(response){
+            console.log(response);
+        })
+        .catch(function(err){
+            console.log(err);
+        });
+    }
+
+    const reMintNFTId = ge("re_mint_nft_id");
+    const reMintButton = ge("re_mint_button");
+    const reMintFeeDisplaySpan = ge("remint_fee_display_span");
+    const reMintNFTDisplaySpan = ge("remint_nft_display_span");
+    reMintButton.addEventListener("click", remint);
+
+    function setRemintModal(nftId){
+        reMintNFTId.value = nftId; 
+        figliContract.methods.getRemintFee().call({from : account})
+        .then(function(response){
+            console.log(response);
+            reMintFeeDisplaySpan.innerHTML = response; 
+        })
+        .catch(function(err){
+            console.log(err);
+        });
+    }
+
+    function remint(){
+        var nftId = reMintNFTId.value;
+        ifigliContract.methods.getRemintFee().call({from : account})
+        .then(function(response){
+            console.log(response);
+            var fee = response; 
+            figliContract.methods.remint(nftId, fee).send({from : account})
+            .then(function(response){
+                console.log(response);
+            })
+            .catch(function(err){
+                console.log(err);
+            });
+        })
+        .catch(function(err){
+            console.log(err);
+        });
+    }
+
+    const trashNFTId = ge("trash_nft_id");
+    const trashButton = ge("trash_button");
+    const trashNFTIdSpan = ge("trash_nft_id_span");
+    trashButton.addEventListener("click", trash); 
+
+    function setTrashModal(nftId){
+        trashNFTId.value = nftId; 
+        trashNFTIdSpan.innerHTML = nftId; 
+    }
+
+    function trash() { 
+        var nftId;
+        figliContract.methods.trash(nftId).send({from : account})
+        .then(function(response){
+            console.log(response);
+        })
+        .catch(function(err){
+            console.log(err);
+        });
+    }
+
+    const shareModal = ge("share_modal");
+    const userShareAddress = ge("share_address_field");
+    const shareNFTId = ge("share_nft_id");
+    const shareButton = ge("share_button");    
+    shareButton.addEventListener("click", share); 
+    var nftId_; 
+    function setShareModal(nftId){
+        shareNFTId.value = nftId; 
+        nftId_ = nftId; 
+        console.log( shareNFTId.value);
+        console.log(nftId_);
+    }
+
+    function share() { 
+        var user = userShareAddress.value; 
+        console.log(user);
+        console.log("sharing");
+        var nftId = shareNFTId.value;
+        console.log(nftId);    
+        
+        figliContract.methods.share(user, nftId).send({from : account})
+        .then(function(response){
+            console.log(response);
+        })
+        .catch(function(err){
+            console.log(err);
+        });
+    }
+
+    const burnNFTId = ge("burn_nft_id");
+    const burnButton = ge("burn_button");
+    burnButton.addEventListener("click", burn); 
+    const burnNFTIdSpan = ge("burn_nft_id_span");
+    
+    function setBurnModal(nftId){
+        burnNFTId.value = nftId; 
+        burnNFTIdSpan.innerHTML = nftId; 
+    }
+
+    function burn() {
+        var nftId = burnNFTId.value;
+        figliContract.methods.burn(nftId).send({from : account})
+        .then(function(response){
+            console.log(response);
+        })
+        .catch(function(err){
+            console.log(err);
+        });
+    }
+
+    const hideNFTId = ge("hide_nft_id");
+    const hideButton = ge("hide_button");
+    hideButton.addEventListener("click", hide); 
+    const hideNFTIdSpan = ge("hide_nft_id_span");
+    
+    function setHideModal(nftId){
+        hideNFTId.value = nftId; 
+        hideNFTIdSpan.innerHTML = nftId; 
+    }
+
+    function hide() { 
+        var nftId;
+        figliContract.methods.hide(nftId).send({from : account})
+        .then(function(response){
+            console.log(response);
+        })
+        .catch(function(err){
+            console.log(err);
+        });
+    }
+
+    const onboardButton = ge("connect_web_3");
+    const showWallet = ge("show_wallet");
+    var account;
+    const web3 = new Web3(window.ethereum);
+    
+    const ipfs = window.IpfsHttpClientLite('https://ipfs.infura.io:5001');    
+    const buffer = window.IpfsHttpClientLite.Buffer;
+    console.log("got ipfs: " + ipfs);
+
+    const figliAddress = "0xF28Ccae4ae06ABD2e34A35b764F2E0DAA6f561c5";
+    const figliContract = new web3.eth.Contract(iFigliAbi, figliAddress);
+
+    //Created check function to see if the MetaMask extension is installed
+    const isMetaMaskInstalled = () => {
+
+    const {
+        ethereum
+    } = window;
+    return Boolean(ethereum && ethereum.isMetaMask);
+    };
+
+    const MetaMaskClientCheck = () => {
+    //Now we check to see if Metmask is installed
+    if (!isMetaMaskInstalled()) {
+        console.log("metamask not installed");
+        //If it isn't installed we ask the user to click to install it
+        onboardButton.innerText = 'Click here to install MetaMask!';
+        //When the button is clicked we call this function
+        onboardButton.onclick = onClickInstall;
+        //The button is now disabled
+        onboardButton.disabled = false;
+    } else {
+        //If it is installed we change our button text
+        onboardButton.innerText = 'Click to Connect Metamask';
+
+        console.log("metamask installed");
+        onboardButton.addEventListener('click', () => {
+            getAccount();
+            onboardButton.innerText = "Web 3 Connected";
+        });
+    }
+    };
+    const initialize = () => {
+      MetaMaskClientCheck();
+    };
+
+    window.addEventListener('DOMContentLoaded', initialize);
+
+    async function getAccount() {
+      const accounts = await ethereum.request({
+          method: 'eth_requestAccounts'
+      });
+      account = accounts[0];
+      showWallet.innerHTML = " :: " + account ;
+      loadGallery();
+    }
+
+    //We create a new MetaMask onboarding object to use in our app
+    //const onboarding = new MetaMaskOnboarding({ forwarderOrigin });
+
+    //This will start the onboarding proccess
+    const onClickInstall = () => {
+      onboardButton.innerText = 'Onboarding in progress';
+      onboardButton.disabled = true;
+      //On this object we have startOnboarding which will start the onboarding process for our end user
+      onboarding.startOnboarding();
+    };
+
+    const onClickConnect = async() => {
+      try {
+          // Will open the MetaMask UI
+          // You should disable this button while the request is pending!
+          await ethereum.request({
+              method: 'eth_requestAccounts'
+          });
+      } catch (error) {
+          console.error(error);
+      }
+    };
+
+    function loadGallery() { 
+
+        figliContract.methods.getNFTs().call({from : account})
+        .then(function(response){
+            console.log(response);
+            var ids = response._nftIds; 
+            var titles = response._titles; 
+            var ipfsHashes = response._imageHash; 
+            var owned = response._owned; 
+            var shared = response._shared; 
+            var reshareUnlocked = response._reshareUnlocked; 
+            
+            clearGallery(); 
+            for(var x = 0; x < ids.length; x++){
+                var id = ids[x];
+                var source = "http://ipfs.io/ipfs/"+ipfsHashes[x];
+                var title = titles[x]; 
+                var type; 
+                 if(owned[x]) {
+                     type = "owned";
+                } else {
+                    type = "shared"; 
+                }
+                var sharedWithFrens = shared[x];
+                var reshareUnlocked = reshareUnlocked[x];
+            
+
+                buildImageHolder(id, source, title, type, reshareUnlocked, sharedWithFrens );
+            }
+        })
+        .catch(function(err) {
+            console.log(err);
+        });
+    }
+
+    function clearGallery() { 
+        galleryDisplay.innerHTML = "";
+    }
+
+    function buildImageHolder( id, source, title, type, reshareUnlocked, shared) { 
+       
+        var holder = ce("div");
+        galleryDisplay.appendChild(holder);
+        holder.setAttribute("class", "font-icon-list col-lg-2 col-md-3 col-sm-4 col-6" );
+        var detail = ce("div");
+        holder.appendChild(detail);
+        detail.setAttribute("class", "font-icon-detail");
+        var img = ce("img");
+        detail.appendChild(img);
+        img.setAttribute("src", source); 
+        img.setAttribute("alt", title);
+        var titleP = ce("p");
+        detail.appendChild(titleP);
+        titleP.appendChild(text(title));
+        var controlsP = ce("p");
+        controlsP.setAttribute("class", "td-actions text-center");
+        detail.appendChild(controlsP);
+
+        console.log(type);
+
+        if(type === "shared") {
+            console.log("doing shared");
+            var reshareUnlockButton = ce("button"); // open / close
+            controlsP.appendChild(reshareUnlockButton);
+
+            reshareUnlockButton.setAttribute("type","button");
+            reshareUnlockButton.setAttribute("rel","tooltip");            
+            reshareUnlockButton.setAttribute("data-toggle", "modal");
+            reshareUnlockButton.setAttribute("data-target", "#unlock_re_share_modal");
+            reshareUnlockButton.setAttribute("onClick","setUnlockReshareModal("+id+")");
+
+            var reshareButton = ce("button"); // enable disable
+            controlsP.appendChild(reshareButton);
+
+            reshareButton.setAttribute("type","button");
+            reshareButton.setAttribute("rel","tooltip");
+            reshareButton.setAttribute("data-toggle", "modal");
+            reshareButton.setAttribute("data-target", "#re_share_modal");
+            reshareButton.setAttribute("onClick","setReshareModal("+id+")");
+        
+            var rsuIcon = ce("i");            
+            reshareUnlockButton.appendChild(rsuIcon);
+            var rsIcon = ce("i");            
+            reshareButton.appendChild(rsIcon);
+
+            if(reshareUnlocked === "UNLOCKED"){                
+                reshareUnlockButton.setAttribute("title","Re-share unlocked");
+                reshareUnlockButton.setAttribute("class","btn btn-success btn-simple btn-link");
+                rsuIcon.setAttribute("class", "fa fa-unlock");
+
+                reshareButton.setAttribute("title","Re-share");
+                reshareButton.setAttribute("class","btn btn-success btn-simple btn-link");
+                rsIcon.setAttribute("class", "fa fa-share-alt-square");
+            }
+            else { 
+                reshareUnlockButton.setAttribute("title","Re-share locked");
+                reshareUnlockButton.setAttribute("class","btn btn-warning btn-simple btn-link");
+                rsuIcon.setAttribute("class", "fa fa-lock");
+
+                reshareButton.setAttribute("title","Locked");
+                reshareButton.setAttribute("class","btn btn-default btn-simple btn-link");
+                rsIcon.setAttribute("class", "fa fa-share-alt-square");
+                reshareButton.disabled = true; 
+            }           
+
+            var reMintButton = ce("button");
+            controlsP.appendChild(reMintButton);
+            reMintButton.setAttribute("data-toggle", "modal");
+            reMintButton.setAttribute("data-target", "#re_mint_modal");
+            reMintButton.setAttribute("onClick","setRemintModal("+id+")");
+
+            reMintButton.setAttribute("type","button");
+            reMintButton.setAttribute("rel","tooltip");
+            reMintButton.setAttribute("title","Re-mint");
+            reMintButton.setAttribute("class","btn btn-success btn-simple btn-link");
+            var rmIcon = ce("i");
+            reMintButton.appendChild(rmIcon);
+            rmIcon.setAttribute("class", "fa fa-flash");
+            var rmIcon2 = ce("i");
+            reMintButton.appendChild(rmIcon2);
+            rmIcon2.setAttribute("class", "fa fa-flash");
+
+            var trashButton = ce("button");
+            controlsP.appendChild(trashButton);
+            trashButton.setAttribute("data-toggle", "modal");
+            trashButton.setAttribute("data-target", "#trash_modal");
+            trashButton.setAttribute("onClick","setTrashModal("+id+")");
+
+            trashButton.setAttribute("type","button");
+            trashButton.setAttribute("rel","tooltip");
+            trashButton.setAttribute("title","share count");
+            trashButton.setAttribute("class","btn btn-danger btn-simple btn-link");
+            var tIcon = ce("i");
+            trashButton.appendChild(tIcon);
+            tIcon.setAttribute("class", "fa fa-trash");
+
+        }
+
+        if(type === "owned") {
+            var ownedButton = ce("button"); // share count
+            controlsP.appendChild(ownedButton);
+
+            ownedButton.setAttribute("type","button");
+            ownedButton.setAttribute("rel","tooltip");
+            ownedButton.setAttribute("title","share count");
+            ownedButton.setAttribute("class","btn btn-info btn-simple btn-link");
+            ownedButton.setAttribute("data-toggle", "modal");
+            ownedButton.setAttribute("data-target", "#count_modal");
+            ownedButton.setAttribute("onClick","setCountModal("+id+")");
+            var oIcon = ce("i");
+            ownedButton.appendChild(oIcon);
+            oIcon.setAttribute("class", "fa fa-camera-retro");
+
+            var shareButton = ce("button"); // share modal 
+            controlsP.appendChild(shareButton);
+
+            shareButton.setAttribute("type","button");
+            shareButton.setAttribute("rel","tooltip");
+            shareButton.setAttribute("title","share");
+            shareButton.setAttribute("class","btn btn-success btn-simple btn-link");
+            shareButton.setAttribute("data-toggle", "modal");
+            shareButton.setAttribute("data-target", "#share_modal");
+            shareButton.setAttribute("onClick","setShareModal("+id+")");
+            var sIcon = ce("i");
+            shareButton.appendChild(sIcon);
+            sIcon.setAttribute("class", "fa fa-share");
+
+
+            var earnedFeesButton = ce("button");  // nft earned fees
+            controlsP.appendChild(earnedFeesButton);
+
+            earnedFeesButton.setAttribute("type","button");
+            earnedFeesButton.setAttribute("rel","tooltip");
+            earnedFeesButton.setAttribute("title","Earned Share Fees");
+            earnedFeesButton.setAttribute("class","btn btn-info btn-simple btn-link");
+            earnedFeesButton.setAttribute("data-toggle", "modal");
+            earnedFeesButton.setAttribute("data-target", "#earned_fees_modal");
+            earnedFeesButton.setAttribute("onClick","setEarnedFeesModal("+id+")");
+            var eIcon = ce("i");
+            earnedFeesButton.appendChild(eIcon);
+            eIcon.setAttribute("class", "fa fa-money");
+
+            console.log(shared);
+            if(!shared){
+                var burnButton = ce("button");  // burn if not shared
+                controlsP.appendChild(burnButton);
+
+                burnButton.setAttribute("type","button");
+                burnButton.setAttribute("rel","tooltip");
+                burnButton.setAttribute("title","Burn NFT");
+                burnButton.setAttribute("class","btn btn-danger btn-simple btn-link");
+                burnButton.setAttribute("data-toggle", "modal");
+                burnButton.setAttribute("data-target", "#burn_modal");
+                burnButton.setAttribute("onClick","setBurnModal("+id+")");
+                var bIcon = ce("i");
+                burnButton.appendChild(bIcon);
+                bIcon.setAttribute("class", "fa fa-fire");
+            }
+            else{
+                var hideButton = ce("button");  // hide if can't burn
+                controlsP.appendChild(hideButton);
+
+                hideButton.setAttribute("type","button");
+                hideButton.setAttribute("rel","tooltip");
+                hideButton.setAttribute("title","share count");
+                hideButton.setAttribute("class","btn btn-danger btn-simple btn-link");
+                hideButton.setAttribute("data-toggle", "modal");
+                hideButton.setAttribute("data-target", "#hide_modal");
+                hideButton.setAttribute("onClick","setHideModal("+id+")");
+                var hIcon = ce("i");
+                hideButton.appendChild(hIcon);
+                hIcon.setAttribute("class", "fa fa-eye-slash");
+            }
+        }
+    }
+
+    function text(txt) {
+        return document.createTextNode(txt);
+    }
+
+    function ce(element) {
+        return document.createElement(element);
+    }
+
+    function ge(element) {
+      return document.getElementById(element);
+    }
+</script> 
+
+</html>
